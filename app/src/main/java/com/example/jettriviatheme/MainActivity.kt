@@ -10,14 +10,16 @@ import androidx.compose.material.Surface
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import com.example.jettriviatheme.model.Question
 import com.example.jettriviatheme.screens.QuestionsViewModel
+import com.example.jettriviatheme.screens.TriviaHome
 import com.example.jettriviatheme.ui.theme.JetTriviaThemeTheme
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.lifecycle.HiltViewModel
+
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -26,8 +28,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetTriviaThemeTheme {
                 Surface(color = MaterialTheme.colors.background) {
+                    TriviaHome()
 
-                    // A surface container using the 'background' color from the theme
+
 
 
                 }
@@ -35,25 +38,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Composable
-    fun MyComposable(
-        viewModel: QuestionsViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 
-    ) {
 
-    }
 
-    @Composable
 
-    fun TriviaHome(viewModel: QuestionsViewModel ) {
-        Questions(viewModel)
-    }
-
-    @Composable
-    fun Questions(viewModel: QuestionsViewModel) {
-        val questions = viewModel.data.value.data?.toMutableList()
-        Log.d("TAG", "Questions: ${questions?.size}")
-    }
 
 
     @Preview()
